@@ -88,7 +88,7 @@ def modify_prof_configs(lane_config_file,lane_name,params):
 	df=pd.DataFrame(pparams,index=[lane_name])
 	confdf.update(df)
 	with open(lane_config_file,'a') as file:
-		file.write('#Saved updated values for %s from interactive window on %s\n'%(lane_name,time.strftime("%d, %b %Y, %H:%M:%S")))
+		file.write('#Saved updated values for %s from interactive window on %s\n'%(lane_name.encode('utf-8'),time.strftime("%d, %b %Y, %H:%M:%S")))
 	confdf.loc[lane_name:lane_name].to_csv(lane_config_file,na_rep='NaN',mode='a',index=False,header=False)
 	return 0
 
